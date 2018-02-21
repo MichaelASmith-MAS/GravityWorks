@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Segment
+  - Pushable
+  - Through
+  - Venus
+  - Jupiter
+  - Neptune
+  - Pluto
+  - Uranus
+  - Saturn
+  - Mars
+  - Wall
+  - Teleporter
+  - XTempEnemy
+  - PickUpHealth
+  - Pick Up
+  - PickUpPoints
+  - PickUpTime
+  - PickUpFireRate
+  - DoorCloseVolume
+  - EndPiece
+  - PickUpGravEffTime
+  - PickUpLore
+  - InvertGravity
+  - Bullet
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - Player
+  - Obstacle
+  - Pushable
+  - Segment
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0

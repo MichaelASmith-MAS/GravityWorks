@@ -1,0 +1,143 @@
+﻿/* -----------------------------------------------------------------------------------
+ * Class Name: ENM_ColdPoweBox
+ * -----------------------------------------------------------------------------------
+ * Author: Joseph Aranda
+ * Date: #DATE#
+ * Credit: 
+ * -----------------------------------------------------------------------------------
+ * Purpose: 
+ * -----------------------------------------------------------------------------------
+ */
+
+using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+
+public class ENM_ColdPoweBox : MonoBehaviour 
+{
+    #region Variables
+    // ------------------------------------------------------------------------------
+    // Public Variables
+    // ------------------------------------------------------------------------------
+    [Header("GameObjects")]
+    public GameObject coldEmmiter;
+
+    // ------------------------------------------------------------------------------
+    // Protected Variables
+    // ------------------------------------------------------------------------------
+
+
+
+    // ------------------------------------------------------------------------------
+    // Private Variables
+    // ------------------------------------------------------------------------------
+    float startTemp = 0;
+    GameObject player;
+    bool interactButtonEnabled = true;
+
+    #endregion
+
+
+    #region Getters/Setters
+
+
+
+    #endregion
+
+    #region Constructors
+
+
+
+    #endregion
+
+    // ------------------------------------------------------------------------------
+    // FUNCTIONS
+    // ------------------------------------------------------------------------------
+    private void Start()
+    {
+        player = WLD_GameController.player;
+    }
+    void Update()
+    {
+        TempGaugePanelOFF();
+        DeathReset();
+        SetInteractButtonEnabled();
+    }
+    // ------------------------------------------------------------------------------
+    // Function Name: 
+    // Return types: 
+    // Argument types: 
+    // Author: 
+    // Date: 
+    // ------------------------------------------------------------------------------
+    // Purpose: 
+    // ------------------------------------------------------------------------------
+    void TempGaugePanelOFF()
+    {
+        if (UNA_StaticVariables.currentHotTemp <= 0)
+        {
+            WLD_GameController.ui_GameObjects[UI_GO_Panels.TemperatureGuagePanel].SetActive(false);
+        }
+    }
+    // ------------------------------------------------------------------------------
+    // Function Name: 
+    // Return types: 
+    // Argument types: 
+    // Author: 
+    // Date: 
+    // ------------------------------------------------------------------------------
+    // Purpose: 
+    // ------------------------------------------------------------------------------
+    void DeathReset()
+    {
+        if (player.GetComponent<WLD_HealthDmg>().Health <= 0)
+        {
+            coldEmmiter.SetActive(false);
+            UNA_StaticVariables.isTempGaugeOn = false;
+            UNA_StaticVariables.currentHotTemp = startTemp;
+        }
+    }
+    // ------------------------------------------------------------------------------
+    // Function Name: 
+    // Return types: 
+    // Argument types: 
+    // Author: 
+    // Date: 
+    // ------------------------------------------------------------------------------
+    // Purpose: 
+    // ------------------------------------------------------------------------------
+    private void OnTriggerStay(Collider other)
+    {
+        if (Input.GetAxis("Interact") > 0 && interactButtonEnabled)
+        {
+            TurnOffAndReset();
+        }
+    }
+    // ------------------------------------------------------------------------------
+    // Function Name: 
+    // Return types: 
+    // Argument types: 
+    // Author: 
+    // Date: 
+    // ------------------------------------------------------------------------------
+    // Purpose: 
+    // ------------------------------------------------------------------------------
+    void TurnOffAndReset()
+    {
+        WLD_GameController.ui_GameObjects[UI_GO_Panels.TemperatureGuagePanel].SetActive(false);
+        UNA_StaticVariables.isTempGaugeOn = false;
+    }
+
+    void SetInteractButtonEnabled()
+    {
+        if (Input.GetAxis("Interact") > 0)
+        {
+            interactButtonEnabled = false;
+        }
+        if (Input.GetAxis("Interact") == 0)
+        {
+            interactButtonEnabled = true;
+        }
+    }
+
+} // End ENM_ColdPoweBox

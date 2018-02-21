@@ -1,0 +1,12 @@
+When adding a new script, please ensure to use the following naming convention for each script name: 
+
+wld_GameController - where the first 3 characters designate what this script should attach to.
+
+prefixes include:
+
+wld - for world level objects
+plr - any script that is player specific
+grv - scripts that deal directly with gravity; these can be on world level, individual objects, or player objects
+una - scripts unassigned to a gameObject, such as static or const
+ui - scripts specific for UI elements
+enm - any enemy specific scripts
